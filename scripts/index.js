@@ -15,7 +15,9 @@ const io = new IntersectionObserver(
   { threshold: 0.25 },
 );
 document.querySelectorAll(".rv").forEach((el) => io.observe(el));
-$("#xp").textContent = new Date().getFullYear() - 2023;
+addEventListener("DOMContentLoaded", () => {
+  $("#xp").textContent = new Date().getFullYear() - 2023;
+});
 
 /* ---- code rain background ---- */
 const cv = $("#rain"),
