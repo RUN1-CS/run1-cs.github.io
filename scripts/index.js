@@ -1,5 +1,6 @@
 import { runBoot } from "./boot.js";
 import { scramble, scrambleIn, goThroughTyped, $, reduce } from "./utils.js";
+import { GOOD_MORNING_NIGHT_CITY, CORPOS } from "./lines.js";
 
 /* ---- reveal + skill bars + scramble-on-reveal ---- */
 const io = new IntersectionObserver(
@@ -71,17 +72,50 @@ if (!reduce) requestAnimationFrame(rain);
 
 /* ---- contact terminal ---- */
 const cmds = {
-  help: "commands: whoami, projects, github, email, clear",
+  help: "commands: whoami, projects, github, email, clear, corpo, ohayou",
   whoami:
     "C and Linux nerd, hopefully making the world better. Glory to Linux.",
   projects: "Neon Kernel, XXSH, Amadeus, System Genesis. scroll up, or: github",
   github: "github.com/RUN1-CS",
   email: "REDACTED@REDACTED.REDACTED",
+  corpo: CORPOS,
+  ohayou: GOOD_MORNING_NIGHT_CITY,
 };
 const input = $("#cmd"),
   out = $("#out");
 const history = [];
 let hi = 0;
+let sentenceTimer;
+
+function typeSentences(text) {
+  const sentences = text.split(/(?<=[.!?])\s+/).filter(Boolean);
+  if (reduce) {
+    out.textContent = sentences.join(" ");
+    return;
+  }
+  let sentenceIndex = 0;
+
+  function typeSentence() {
+    const sentence = sentences[sentenceIndex];
+    let characterIndex = 0;
+    function typeCharacter() {
+      characterIndex += 1;
+      out.textContent = sentence.slice(0, characterIndex);
+      if (characterIndex < sentence.length) {
+        sentenceTimer = setTimeout(typeCharacter, 32);
+      } else if (sentenceIndex < sentences.length - 1) {
+        sentenceTimer = setTimeout(() => {
+          out.textContent = "";
+          sentenceIndex += 1;
+          typeSentence();
+        }, 1000);
+      }
+    }
+    typeCharacter();
+  }
+
+  typeSentence();
+}
 
 input.addEventListener("keydown", (e) => {
   if (e.key === "ArrowUp" || e.key === "ArrowDown") {
@@ -105,13 +139,20 @@ input.addEventListener("keydown", (e) => {
   if (e.key !== "Enter") return;
   const v = input.value.trim().toLowerCase();
   input.value = "";
+  clearTimeout(sentenceTimer);
   if (v) {
     history.push(v);
     hi = history.length;
   }
   out.classList.toggle("redacted", v === "email");
   if (v === "clear") {
+    scramble(out, "", 0);
     out.textContent = "";
+    return;
+  }
+  if (v === "corpo" || v === "ohayou") {
+    scramble(out, "", 0);
+    typeSentences(cmds[v]);
     return;
   }
   scramble(out, cmds[v] || `unknown command: ${v || "(empty)"}. try help`, 500);
