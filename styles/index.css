@@ -184,25 +184,29 @@ h2::before {
   display: inline-block;
 }
 .name::before,
-.name::after {
+.name::after,
+.project-title::before,
+.project-title::after {
   content: attr(data-t);
   position: absolute;
   inset: 0;
   opacity: 0;
 }
-.name::before {
+.name::before,
+.project-title::before {
   color: var(--ice);
   clip-path: inset(0 0 55% 0);
 }
-.name::after {
+.name::after,
+.project-title::after {
   color: var(--hot);
   clip-path: inset(55% 0 0 0);
 }
-.name.glitch::before {
+.glitch::before {
   animation: g1 0.35s steps(2) 1;
   opacity: 0.9;
 }
-.name.glitch::after {
+.glitch::after {
   animation: g2 0.35s steps(2) 1;
   opacity: 0.9;
 }
@@ -402,6 +406,10 @@ h2::before {
   font: 600 20px var(--display);
   color: #fff;
   margin: 6px 0 10px;
+}
+.project-title {
+  position: relative;
+  display: inline-block;
 }
 .card .meta {
   font-size: 12px;

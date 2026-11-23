@@ -123,11 +123,27 @@ runBoot(() => {
   const name = $("#name");
   name.dataset.t = name.textContent; // feeds the glitch layers
   scramble(name, name.textContent, 900);
+  const projectTitles = [...document.querySelectorAll(".project-title")];
+  const glitch = (el) => {
+    el.classList.add("glitch");
+    setTimeout(() => el.classList.remove("glitch"), 360);
+  };
+  projectTitles.forEach((title) => {
+    title.dataset.t ||= title.textContent;
+  });
   goThroughTyped();
   if (reduce) return;
+  projectTitles.forEach((title) => {
+    title.closest(".card").addEventListener("mouseenter", () => glitch(title));
+  });
+  let projectIndex = 0;
   setInterval(() => {
     if (document.hidden) return;
     name.classList.add("glitch");
     setTimeout(() => name.classList.remove("glitch"), 360);
+    if (projectTitles.length) {
+      glitch(projectTitles[projectIndex]);
+      projectIndex = (projectIndex + 1) % projectTitles.length;
+    }
   }, 5200);
 });
