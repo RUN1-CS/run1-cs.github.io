@@ -3,8 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="RUN1-CS: software and systems engineer. Portfolio of kernels, shells, local AI and Linux tooling."
+    />
+    <meta name="theme-color" content="#06070e" />
+    <meta property="og:title" content="RUN1-CS — Portfolio" />
+    <meta
+      property="og:description"
+      content="Software and systems engineer: C, TypeScript, Linux, PostgreSQL."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2306070e'/%3E%3Cpath d='M6 24V8h8a5 5 0 010 10H6m8 0l6 6' fill='none' stroke='%235ef2ff' stroke-width='3'/%3E%3C/svg%3E"
+    />
     <title>RUN1-CS — Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=JetBrains+Mono:wght@300;400&display=swap"
       rel="stylesheet"
@@ -13,29 +28,44 @@
     <link rel="stylesheet" href="styles/redacted.css" />
     <!-- Cloudflare Web Analytics -->
     <script
-      type="module"
+      defer
       src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon='{"token": "e164328240eb477395f06b8bb4eed0f9"}'
     ></script>
     <!-- End Cloudflare Web Analytics -->
+    <noscript>
+      <style>
+        #boot {
+          display: none;
+        }
+        .rv {
+          opacity: 1;
+          transform: none;
+        }
+        .fill {
+          width: 80%;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
-    <div id="boot"><pre id="bootlog"></pre></div>
+    <a class="skip" href="#main">skip to content</a>
+    <div id="boot" aria-hidden="true"><pre id="bootlog"></pre></div>
     <canvas id="rain" aria-hidden="true"></canvas>
 
     <header>
-      <a class="logo" href="#hero">NC//</a>
-      <nav>
+      <a class="logo" href="#hero" aria-label="Back to top">RUN1//</a>
+      <nav aria-label="Primary">
         <a href="#about">about</a><a href="#skills">skills</a
         ><a href="#projects">projects</a><a href="#contact">contact</a>
       </nav>
     </header>
 
-    <main>
+    <main id="main">
       <!-- ====== HERO — edit name, roles ====== -->
       <section id="hero">
         <div class="tag">// session: online</div>
-        <h1 class="name" id="name" data-t="RUN1-CS">RUN1-CS</h1>
+        <h1 class="name scramble" id="name" data-t="RUN1-CS">RUN1-CS</h1>
         <div class="role">
           <span
             id="role"
@@ -86,43 +116,57 @@
         <div class="skills rv">
           <div class="bar">
             <span>JavaScript / TypeScript</span>
-            <div class="track"><div class="fill" data-v="90"></div></div>
+            <div class="track" aria-hidden="true">
+              <div class="fill" data-v="90"></div>
+            </div>
+            <em>90</em>
+          </div>
+
+          <div class="bar">
+            <span>Linux / NixOS</span>
+            <div class="track" aria-hidden="true">
+              <div class="fill" data-v="90"></div>
+            </div>
             <em>90</em>
           </div>
 
           <div class="bar">
             <span>C / C++</span>
-            <div class="track"><div class="fill" data-v="85"></div></div>
-            <em>85</em>
-          </div>
-
-          <div class="bar">
-            <span>Linux / NixOS</span>
-            <div class="track"><div class="fill" data-v="85"></div></div>
+            <div class="track" aria-hidden="true">
+              <div class="fill" data-v="85"></div>
+            </div>
             <em>85</em>
           </div>
 
           <div class="bar">
             <span>Backend Development</span>
-            <div class="track"><div class="fill" data-v="85"></div></div>
+            <div class="track" aria-hidden="true">
+              <div class="fill" data-v="85"></div>
+            </div>
             <em>85</em>
           </div>
 
           <div class="bar">
             <span>System Architecture</span>
-            <div class="track"><div class="fill" data-v="80"></div></div>
-            <em>80</em>
+            <div class="track" aria-hidden="true">
+              <div class="fill" data-v="85"></div>
+            </div>
+            <em>85</em>
           </div>
 
           <div class="bar">
             <span>SQL / PostgreSQL</span>
-            <div class="track"><div class="fill" data-v="75"></div></div>
-            <em>75</em>
+            <div class="track" aria-hidden="true">
+              <div class="fill" data-v="80"></div>
+            </div>
+            <em>80</em>
           </div>
 
           <div class="bar">
             <span>Assembly</span>
-            <div class="track"><div class="fill" data-v="55"></div></div>
+            <div class="track" aria-hidden="true">
+              <div class="fill" data-v="55"></div>
+            </div>
             <em>55</em>
           </div>
         </div>
@@ -132,48 +176,71 @@
       <section id="projects">
         <h2>projects</h2>
         <div class="grid">
-          <a class="card rv" href="https://github.com/RUN1-CS/Neon-Kernel">
-            <div class="meta">SIDE PROJECT</div>
-            <h3>Neon Kernel</h3>
+          <a class="card rv" href="https://github.com/RUN1-CS/Amadeus">
+            <div class="meta">ACTIVE DEVELOPMENT</div>
+            <h3 class="scramble">Amadeus</h3>
             <p>
-              A bare-metal kernel development project focused on learning
-              low-level C programming and operating system fundamentals.
+              A self-hosted AI application integrating local language models,
+              document context, vector search and extensible services.
             </p>
-            <div class="stack">C</div>
+            <div class="stack">
+              <span
+                class="typed"
+                data-t="TypeScript,Vue,Node.js,PHP,PostgreSQL,pgvector,Docker,Ollama,ComfyUI"
+                data-hover="true"
+              ></span
+              ><span class="caret"></span>
+            </div>
+          </a>
+
+          <a
+            class="card rv"
+            href="href=https://github.com/RUN1-CS/System-Genesis"
+          >
+            <div class="meta">IN DEVELOPMENT</div>
+            <h3 class="scramble">System Genesis</h3>
+            <p>
+              A Linux system monitoring platform combining a lightweight
+              resource-tracking daemon with a backend and web interface for
+              real-time infrastructure monitoring.
+            </p>
+            <div class="stack">
+              <span
+                class="typed"
+                data-t="C,TypeScript,Node.js,PostgreSQL,Docker,Linux"
+                data-hover="true"
+              ></span
+              ><span class="caret"></span>
+            </div>
+          </a>
+
+          <a class="card rv" href="https://github.com/RUN1-CS/Neon-Kernel">
+            <div class="meta">EXPERIMENTAL</div>
+            <h3 class="scramble">Neon Kernel</h3>
+            <p>
+              A bare-metal operating system development project exploring kernel
+              architecture, low-level programming and hardware interaction.
+            </p>
+            <div class="stack">
+              <span class="typed" data-t="C,Assembly" data-hover="true"></span
+              ><span class="caret"></span>
+            </div>
           </a>
 
           <a class="card rv" href="https://github.com/RUN1-CS/XXSH">
             <div class="meta">PUBLIC</div>
-            <h3>XXSH</h3>
+            <h3 class="scramble">XXSH</h3>
             <p>
-              A lightweight command-line shell with a custom interpreter,
-              written in C.
-            </p>
-            <div class="stack">C</div>
-          </a>
-
-          <a class="card rv" href="https://github.com/RUN1-CS/Amadeus">
-            <div class="meta">PUBLIC</div>
-            <h3>Amadeus</h3>
-            <p>
-              A local AI chat application designed to integrate language models
-              with document context and extensible functionality.
+              A lightweight command-line shell featuring a custom command
+              interpreter and execution environment, written in C.
             </p>
             <div class="stack">
-              TypeScript · Vue · PHP · Node.js · PostgreSQL · Docker · Ollama
-            </div>
-          </a>
-
-          <a class="card rv" href="https://github.com/RUN1-CS/Synapse">
-            <div class="meta">PUBLIC</div>
-            <h3>System Genesis</h3>
-            <p>
-              Linux system resources tracker and monitoring tool, designed to
-              provide real-time insights into system performance and resource
-              usage.
-            </p>
-            <div class="stack">
-              C · TypeScript · Node.js · PostgreSQL · Docker · HTML · CSS
+              <span
+                class="typed"
+                data-t="C,POSIX,Shell Scripting"
+                data-hover="true"
+              ></span
+              ><span class="caret"></span>
             </div>
           </a>
         </div>
