@@ -417,6 +417,35 @@ h2::before {
   font-size: 12px;
   color: var(--ice);
 }
+.card-preview {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin: 0;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.35s ease,
+    margin-top 0.35s ease,
+    opacity 0.25s ease;
+}
+.card-preview > div {
+  min-height: 0;
+  overflow: hidden;
+}
+.card-preview video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3440 / 1440;
+  object-fit: contain;
+  background: var(--void);
+  border: 1px solid var(--line);
+}
+.card:hover .card-preview,
+.card:focus-visible .card-preview {
+  grid-template-rows: 1fr;
+  margin-top: 22px;
+  opacity: 1;
+}
 
 /* contact */
 .term {
